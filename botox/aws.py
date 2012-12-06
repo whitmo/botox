@@ -1,6 +1,6 @@
 # If developing this further, see the following e-buddies to collaborate as they
 # also have internal/unreleased solutions and have indicated interest:
-# 
+#
 # * Gavin McQuillan (gmcquillan)
 # * Travis Swicegood (tswicegood)
 # * Christopher Groskopf (onyxfish)
@@ -310,8 +310,9 @@ class AWS(object):
             placement=kwargs['zone'],
             security_group_ids=groups
         )
+
         # Subnet optional, if present implies VPC
-        if 'subnet' in kwargs:
+        if kwargs.get('subnet', None):
             # Also do convenience reverse lookup in subnet map
             subnet_id = self.get_subnet_id(kwargs['subnet'])
             params['subnet_id'] = 'subnet-' + subnet_id
