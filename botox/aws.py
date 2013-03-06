@@ -308,7 +308,8 @@ class AWS(object):
             instance_type=kwargs['size'],
             key_name=kwargs['keypair'],
             placement=kwargs['zone'],
-            security_group_ids=groups
+            security_group_ids=groups,
+            user_data=kwargs.get('user_data', '')
         )
 
         # Subnet optional, if present implies VPC
@@ -363,3 +364,4 @@ class AWS(object):
                 time.sleep(5)
                 self.log(".", end='')
                 instance.update()
+
